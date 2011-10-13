@@ -1,0 +1,27 @@
+/*
+ * A named semaphore server
+ *
+ */
+
+Subsystem semsrv 500;
+
+#include <mach/std_types.defs>
+#include <mach/mach_types.defs>
+
+type sem_name_t = c_string[*:256];
+
+import "semsrv_defs.h";
+
+routine semsrv_create_semaphore(server: mach_port_t;
+                                in name: sem_name_t;
+                                in value: int;
+                                out semaphore: semaphore_t;
+                                out created: boolean_t);
+routine semsrv_get_semaphore(server: mach_port_t;
+                             in name: sem_name_t;
+                             out semaphore: semaphore_t);
+routine semsrv_destroy_semaphore(server: mach_port_t;
+                                 in name: sem_name_t);
+
+ServerPrefix server_;
+UserPrefix client_;
