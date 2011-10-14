@@ -1,0 +1,8 @@
+syntax: glob
+*~
+*.o
+semsrv
+semsrv.h
+semsrvServer.c
+semsrvUser.c
+semtest
